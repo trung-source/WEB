@@ -17,7 +17,7 @@ from . import secret1
 
 #---------------------------------------------------HMAC Function----------------------------------------------------------#
 
-
+# DÙNG THEO THƯ VIỆN hashlib
 def HMAC(K,tm):                                                         # HMAC sử dụng SHA512 trong thư viện hashlib theo bài báo rfc2104
     ipad = int('0x36' + '36'*127,base=16)                                # the byte 0x36 repeated B times (B=64)
     opad = int('0x5C' + '5C'*127,base=16)                                # the byte 0x5C repeated B times (B=64)
@@ -41,7 +41,7 @@ def HMAC(K,tm):                                                         # HMAC s
     H2 = '0x' + H2
     return H2
 
-
+# DÙNG THEO CÁCH TỰ XÂY DỰNG
 def HMAC1(K,tm):                                                        # HMAC sử dụng hàm SHA512 xây dựng theo bài báo rfc 2104
     ipad = int('0x36' + '36'*127,base=16)                               # the byte 0x36 repeated B times (B=128)
     opad = int('0x5C' + '5C'*127,base=16)                               # the byte 0x5C repeated B times (B=128)
