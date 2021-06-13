@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} Login {% endblock %}
+
+
+{% block content %} 
+<form method="POST" >
+    <h3 align="center" >Login with Authenticate Code</h3>
+    <div class="form-group">
+        <label for="code">Authenticate Code</label>
+        <input type="text" 
+        class="form-control" 
+        name="code" 
+        placeholder="Enter code"
+        />
+    </div>
+    <!-- <div><label>Authenticate Code: <input type="text" name="code"></label></div> -->
+    <!-- <br />
+    <p> Here key: {{sk}} </p> -->
+    <br />
+    <li class="active"><a href="{{ url_for('static',filename='key/skey.txt') }}">skey </a></li>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <div>
+        <img width="25%" height="25%" src="{{ url_for('static', filename='image/QR.png', width = 50, height = 50) }}">
+    </div>
+</form>
+
+
+{% endblock %}
