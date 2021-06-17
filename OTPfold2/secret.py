@@ -49,7 +49,7 @@ def makeqr(k):                                                                  
     qr.add_data(k)
     qr.make(fit=True)
     img = qr.make_image(fill='black', back_color='white')
-    img.save('Python\WEB\web\static\image\QR.png')
+    img.save('web-totp\OTPfold2\QR\QR.png')
 
 def main():
     K = sharekey()
