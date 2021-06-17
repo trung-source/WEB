@@ -26,7 +26,7 @@ def init_secret(p = 509, q = 607, secret = 0):
         pass
 
 def sharekey():                                                                     # Khoa chia se
-    file = open('WEB\web\static\key\skey.txt','r+')                                   # 
+    file = open('web-totp\WEB\web\static\key\skey.txt','r+')                                   # 
     secret = file.read()
     if secret == '':                                                                # Chưa có khóa thì tạo
         reset_key()                                                                 
@@ -35,7 +35,7 @@ def sharekey():                                                                 
         return secret
 
 def reset_key():                                                                     # Hàm encode khóa
-    file = open('WEB\web\static\key\skey.txt','w')  
+    file = open('web-totp\WEB\web\static\key\skey.txt','w')  
     secret = init_secret()
     # print(len(hex(int(secret))))
     s = base64.b32encode(bytes(str(secret),'ascii'))                                 # encoding
