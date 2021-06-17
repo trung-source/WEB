@@ -34,7 +34,7 @@ def loginfa():
     user = current_user
     email = request.args['email']
     user = User.query.filter_by(email=email).first()
-    file = open('WEB\web\static\key\skey.txt','r')
+    file = open('web-totp\WEB\web\static\key\skey.txt','r')
     skey = file.read()
     file.close()
     if request.method == 'POST':
@@ -43,7 +43,7 @@ def loginfa():
             K = int(base64.b32decode(skey))
             t = int(time()/30)
             D1,D2 = OTP1.verify(K,t)
-            file = open('WEB\web\static\key\digi.txt','r+')
+            file = open('web-totp\WEB\web\static\key\digi.txt','r+')
             s = str(D1) + '-' + str(D2)
             file.write(s)
             file.close()
