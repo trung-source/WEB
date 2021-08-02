@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, sessions, url_for , session                            # Là thiết kế cho ứng dụng: từng trang web (URL)
+from flask import Blueprint, render_template, request, flash, redirect, url_for                           # Là thiết kế cho ứng dụng: từng trang web (URL)
 from .models import User
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -44,13 +44,12 @@ def loginfa():
     user = current_user
     email = request.args['email']
     user = User.query.filter_by(email=email).first()
-    file = open('WEB\web\static\key\skey.txt','r')
-    skey = file.read()
-    file.close()
+
+    skey = user.otp_secret
     if request.method == 'POST':
         if user:
             code = request.form.get('code') 
-            K = int(base64.b32decode(skey))
+            K = int(skey)
             t = int(time()/30)
             D1,D2 = OTP1.verify(K,t)
             file = open('WEB\web\static\key\digi.txt','r+')
